@@ -103,6 +103,8 @@ func (num *Uint64) Scan(state fmt.ScanState, verb rune) error {
 				// 是权
 				*num += Uint64((sec + number) * unit.value)
 				sec = 0
+			} else if unit.value == 10 && number == 0 {
+				*num += Uint64(unit.value)
 			} else {
 				sec += (number * unit.value)
 			}
